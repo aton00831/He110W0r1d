@@ -1,0 +1,19 @@
+set ai
+set background=dark
+set cursorline
+set enc=utf8
+
+set hls
+
+set ic
+set expandtab
+
+set tabstop=4
+set shiftwidth=4
+
+set foldenable
+set foldmethod=indent
+set foldcolumn=1
+set foldlevel=5
+
+set nu
