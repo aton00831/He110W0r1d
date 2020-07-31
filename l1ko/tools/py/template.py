@@ -15,26 +15,26 @@ Date : {Date}
 import unittest
 from collections import namedtuple
 
-TestCase = namedtyple('TestCase', ['in', 'out'])
+TestCase = namedtuple('TestCase', ['in', 'out'])
 
 class Solution:
-	def solution(self):
-		pass
+    def solution(self):
+        pass
 
 class SolutionTest(unittest.TestCase):
-	def setUp(self):
-		pass
+    def setUp(self):
+        pass
 
-	def tearDown(self):
-		pass
+    def tearDown(self):
+        pass
 
-	def test_solution_function(self):
-		s = Solution()
+    def test_solution_function(self):
+        sol = Solution()
 
-		testCases = [TestCase([1,2,3], 2)]
-		for testCase in testCases:
-			self.assertEqual(s.solution(testCase.x), testCase.y)
-		
+        testCases = [TestCase([1,2,3], 2)]
+        for testCase in testCases:
+            self.assertEqual(sol.solution(testCase.x), testCase.y)
+        
 if __name__ == '__main__':
-	unittest.main()
+    unittest.main()
 
