@@ -266,4 +266,7 @@ __pycache__/
 # Scala Related
 scala/out/
 
+# Mac
+.DS_Store
+.vscode/
 
