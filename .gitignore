@@ -260,4 +260,10 @@ paket-files/
 __pycache__/
 *.pyc
 
+# Data Scientist Related
 .ipynb_checkpoints/
+
+# Scala Related
+scala/out/
+
+
