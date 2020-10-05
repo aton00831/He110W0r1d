@@ -1,6 +1,6 @@
 package lectures.part1basics
 
-object CBBvsCBV extends App {
+object CBNvsCBV extends App {
 
   def calledByValue(x: Long): Unit = {
     println("by value: " + x) // by value: 292800379619024
@@ -30,7 +30,7 @@ object CBBvsCBV extends App {
 
 
   /* Takeaways
-  - Call by value: ge
+  - Call by value:
   value is computed before call
   same value used everywhere
 
@@ -61,9 +61,5 @@ object CBBvsCBV extends App {
 
   As you know from the advanced course examples, we see slight behavioural
   differences between lazy/ call-by-name/ call-by-need.
-
-
    */
-
-
 }
