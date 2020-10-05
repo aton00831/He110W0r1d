@@ -76,13 +76,82 @@ def calledByName(x: => Long): Unit = {
 - `+:` prepending, `:+` appending
 
 ## 3 Object-Oriented Programming
-- [OOP Basics](./src/lectures/part2oop/OOBasics.scala)
-- [OOP Basics Exercises](./src/lectures/part2oop/OOBasicsExercises.scala)
-- [Method Notations](./src/lectures/part2oop/MethodNotations.scala)
-- [Objects](./src/lectures/part2oop/Objects.scala)
-- [Inheritance](./src/lectures/part2oop/inheritance.scala)
+### [OOP Basics](./src/lectures/part2oop/OOBasics.scala) & [OOP Basics Exercises](./src/lectures/part2oop/OOBasicsExercises.scala)
+- Defining classes `class Person(name: String, age: Int)` constructor
+- without val, class parameters are NOT FIELDS (just parameters)
+```scala
+class Novel(name: String) {
+    def XXX = println(this.name) # PASS
+}
+val novel = new Novel("Great Expectations")
+novel.name # FAILED
 
-- [Practice: LinkedList](./src/exercises/MyList.scala)
+```
+- Instantiating `val bob = new Person("bob")`
+- Defining method `def greet(): String = {...}`
+- Calling method `val bobSayHi = bob.greet`  (Syntax allowed for parameter-less method)
+- Overloading constructor `def this(..)`
+
+### [Method Notations](./src/lectures/part2oop/MethodNotations.scala)
+- ALL OPERATORS ARE METHODS !!
+
+1. Infix notation - only used for methods with one parameter
+    - `mary.likes("Inception)`
+    - `mary likes "Inception`
+    - so nature language!
+    
+2. prefix notation - only allowed for +,-,!,~
+    - `mary.unary_!`
+    - `!mary`
+
+3. Postfix notation - only used for method with no parameter
+    - `import scala.language.postfixOps`
+    - `mary.isAlive`
+    - `mary isAlive`
+
+**!!! not recommend to use, it cause confusion when reading code to solve this, scala force to open flag to use**
+
+4. apply method is special, allow you to call your object like functions
+    - `mary.apply("Hi there")`
+    - `mary("Hi there")`
+    - this breaks that barrier between OOP & FP
+    
+### [Objects](./src/lectures/part2oop/Objects.scala)
+- SCALA DOES NOT HAVE CLASS_LEVEL FUNCTIONALITY ("static" values or methods)
+- Scala object = SINGLETON INSTANCE, definition = type + its only instance
+    - are in their own class 
+    - are the only instance
+    - singleton pattern in one line
+- Scala Companions
+    - can access each other's private member
+    - COMPANIONS Pattern (Object, class the same name)    
+- Scala Applications = Scala object with `def main(args: Array[String]): Unit`
+- every usable code belongs to some instance of a class. 
+(In Python or C++, you can write top-level functions and variables
+ that don't belong to a class or object.)
+
+#### [Scala Object vs Class](https://stackoverflow.com/questions/1755345/difference-between-object-and-class-in-scala)
+- `class C` defines a class, just as in Java or C++.
+- `object O` creates a singleton object `O` as instance of some anonymous class; it can be used to hold static members that are not associated with instances of some class.
+- `object O extends T` makes the object `O` an instance of `trait T`; you can then pass `O` anywhere, a `T is expected.
+- if there is a `class C`, then `object C` is the __companion object__ of class `C`; note that the companion object is not automatically an instance of `C`.
+- An object has exactly one instance (you can not call new MyObject). You can have multiple instances of a class.
+- In specific definition, object serves the same (and some additional) purposes as the static methods and fields in Java.
+
+### [Inheritance](./src/lectures/part2oop/inheritance.scala)
+- overRIDING vs overLOADING
+    - overRIDING: supply different implementation in derived classes
+    - overLOADING : supply multiple method with different signatures, but with the same name in the same class
+    
+- super: referent a method or field from parent class
+- preventing overrides
+    - use final on member
+    - use final on the entire class (class can't be extended)
+    - `sealed class Anima {` sealed the class  = extend classes in THIS FILE, prevent extensions in other files (soft restriction)
+- numerical classes and string type are final
+
+### [Practice: LinkedList](./src/exercises/MyList.scala)
+- focus on `immutable data structure`
 
 ... keep Going
 
