@@ -263,6 +263,7 @@ __pycache__/
 # Data Scientist Related
 .ipynb_checkpoints/
 _test.py
+*.csv
 
 # Scala Related
 scala/out/
