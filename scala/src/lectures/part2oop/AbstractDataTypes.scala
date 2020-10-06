@@ -31,7 +31,7 @@ object AbstractDataTypes extends App {
 
   trait ColdBlooded
 
-  // inheritance both animal and carnivoew
+  // inheritance both animal and carnivore
   class Crocodile extends Animal with Carnivore with ColdBlooded {
     override val creatureType: String = "croc"
 

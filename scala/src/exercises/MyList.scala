@@ -9,35 +9,62 @@ abstract class MyList {
     add(int) => new list with this element added
     toString => a string representation of the list
    */
-  val head: Int
-  val tail: MyList
+  def head: Int
+  def tail: MyList
   def isEmpty: Boolean
   def add(element: Int): MyList // immutable list
   // def toString: String
+  def printElements: String
+  // printElements delegate to subclasses implementation
+  // POLYMORPHIC CALL
+  // toString is method in anyRef Class
+  override def toString: String = "[" + printElements + "]"
+
+
 }
 
 object Empty extends MyList {
   // val head: Int = ??? // return nothing, throw not implemented error
-  val head: Int = throw new NoSuchElementException // Throw expression are expressions which return nothing
-  val tail: MyList = throw new NoSuchElementException
+  def head: Int = throw new NoSuchElementException // Throw expression are expressions which return nothing
+  def tail: MyList = throw new NoSuchElementException
   def isEmpty: Boolean = true
   def add(element: Int): MyList = new Cons(element, Empty) // immutable list
+  def printElements: String = ""
 }
 
 class Cons(h: Int, t: MyList) extends MyList {
-  val head: Int = h // return nothing, throw not implemented error
-  val tail: MyList = t
+  def head: Int = h // return nothing, throw not implemented error
+  def tail: MyList = t
   def isEmpty: Boolean = false
   def add(element: Int): MyList = new Cons(element, this) // immutable list
+  def printElements: String =
+    if(t.isEmpty) "" + h
+    else h + " " + t.printElements
 }
 
 object MyListTest extends App {
   val list = new Cons(1, new Cons(2, new Cons(3, Empty)))
   println(list.tail.head)
+  println(list.add(4).head)
+  println(list.isEmpty)
+
+
+  println(list.toString)
 
 }
 
+/* Takeaway
+- Scala offers class-based inheritance
+  - access modifiers: private, protected, default(none = public)
+  - need to pass in constructor arguments to parent class
+- Derived classes can override members or methods
+- Reuse parent fields/ methods with super
+- Prevent inheritance with final and sealed
+- abstract classes
+- traits
+- inheriting from a class and multiple traits
 
+*/
 
 /*
 Questions:
@@ -121,6 +148,7 @@ class MutableMyList() {
     if(lastNode==null) head = newNode
     else lastNode.next = newNode
   }
+
 }
 
 /* English class
@@ -134,5 +162,30 @@ AFAIK:
 written abbreviation for as far as I know:
 used when you believe that something is true,
 but you are not completely certain
+
+ */
+
+/*
+These class member functions seem to be a lot like closures
+For example, in the Cons class, tail is a function, not a member variable of type MyList. This would be similar to doing the following in Python:
+``` Python
+make_list = lambda h, t: lambda f: f(h, t)
+head = lambda lst: lst(lambda h, t: h)
+tail = lambda lst: lst(lambda h, t: t)
+def list_to_str(lst):
+    if (None == lst):
+        return ""
+    return str(head(lst)) + " " + list_to_str(tail(lst))
+
+arr = make_list(3, make_list(4, make_list(7, make_list(2, make_list(5, None)))))
+print(list_to_str(arr)) # Prints 3 4 7 2
+```
+The reason you couldn't have done that with anonymous functions in Scala as we've done with Python lambdas here is because
+that would've **required to define a self-recursive return type for the make_list function.**
+
+Hence, you need classes in Scala and maybe in other statically typed languages like Standard ML too.
+A function that takes a function as an argument seems very similar to a class with a member function.
+
+head(tail(tail(list)))  in Python is very similar to  list.tail.tail.head  in Scala
 
  */

@@ -150,8 +150,52 @@ novel.name # FAILED
     - `sealed class Anima {` sealed the class  = extend classes in THIS FILE, prevent extensions in other files (soft restriction)
 - numerical classes and string type are final
 
+### [Abstract Data Types](./src/lectures/part2oop/AbstractDataTypes.scala)
+```scala
+abstract class Anima
+class Dog extends Animal
+trait Carnivore {}
+trait ColdBlooded {}
+class Crocodile extends Animal with Carnivore with ColdBlooded {}
+```
+- contains unimplemented or abstract field, methods
+- in derived class, non-abstract must use override
+- abstract classes can have both abstract and non-abstract member, so can traits
+- traits, ultimate abstract data type in scala
+    - traits do not have constructor parameters
+    - multiple traits may be inherited by the same class
+    - traits = behavior (more subtle choice)
+    - abstract class = things
+
+- Scala's Type Hierarchy
+    - `scala.Any` (mother of all types)
+
+    - scala.Any <--- `scala.AnyRef` (map to java.lang.Object)
+        - All classes you'll use will derive from AnyRef
+        - unless you explicitly say they extend some other class
+        - e.g. String, List, Set,
+        - all user derived classes even not explicitly say so like class person (actually extends AnyRef)
+
+    - scala.AnyRef <--- `scala.Null` (basically means no reference) so you can replace person with no reference
+
+    - scala.Any <--- scala.AnyVal e.g. Int, Unit, Boolean, Float
+        - very early used in practice
+        - contain primitive type
+        - (maybe for some memory optimizations)
+
+    - scala.Any, scala.Null <--- scala.Nothing
+        - nothing can replace everything!!
+        - is a subtype of every single thing
+        - make sense in exceptions and expression returning
+
+
 ### [Practice: LinkedList](./src/exercises/MyList.scala)
 - focus on `immutable data structure`
+- `def add(element: Int): MyList = new Cons(element, Empty)` immutable list
+- `val head: Int = ???` return nothing, throw not implemented error
+- `val head: Int = throw new NoSuchElementException` Throw expression are expressions which return nothing
+- POLYMORPHIC CALL
+-  toString is method in AnyRef Class
 
 ... keep Going
 
@@ -161,3 +205,10 @@ novel.name # FAILED
 
 ## 6 Practice: A Small File System
 
+
+
+## Great Reference 
+- [Scala Learning Tips](https://medium.com/javarevisited/why-java-developer-should-learn-scala-programming-in-2020-3ca01a47eb0d)
+- [Algorithm in Scala](https://github.com/TheAlgorithms/Scala)
+- [awesome-scala](https://github.com/lauris/awesome-scala)
+- [awesome-scalability](https://github.com/binhnguyennus/awesome-scalability)
