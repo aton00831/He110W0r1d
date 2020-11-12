@@ -213,6 +213,9 @@ class Crocodile extends Animal with Carnivore with ColdBlooded {}
 - [awesome-scala](https://github.com/lauris/awesome-scala)
 - [awesome-scalability](https://github.com/binhnguyennus/awesome-scalability)
 - [is scala dead?](https://www.lihaoyi.com/post/TheDeathofHypeWhatsNextforScala.html)
+- [(CH) About Functional Programming](https://ithelp.ithome.com.tw/users/20103390/ironman/3740)
 
+
+- [JS Closure](https://stackoverflow.com/questions/111102/how-do-javascript-closures-work)
 
 > Scala lacks in tooling and compatibility and doesn't integrate with Spring and other tools as well as Groovy does.
