@@ -272,3 +272,5 @@ scala/out/
 .DS_Store
 .vscode/
 
+# Compressed file
+*.zip
